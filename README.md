@@ -26,3 +26,7 @@ pnpm start
 
 - [websocket\.send\(data\[, options\]\[, callback\]\)](https://github.com/websockets/ws/blob/master/doc/ws.md#websocketsenddata-options-callback) - `Default is autodetected`
 - [WebSocket: send\(\) メソッド](https://developer.mozilla.org/ja/docs/Web/API/WebSocket/send) - こっちではない
+
+## TODO
+
+`pnpm start` を停止させるのが難しい。Ctrl+C を 2 回押さないと。
