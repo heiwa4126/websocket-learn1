@@ -1,0 +1,46 @@
+<html>
+	<head> </head>
+	<body>
+		<pre id="receive"></pre>
+		<input type="text" id="message" />
+		<input type="button" id="btnSendText" value="送信(text)" />
+		<input type="button" id="btnSendBin" value="送信(バイナリ)" />
+		<input type="button" id="btnClose" value="CLOSE" />
+		<script>
+			const receive = document.getElementById("receive");
+			const message = document.getElementById("message");
+			const btnSendText = document.getElementById("btnSendText");
+			const btnSendBin = document.getElementById("btnSendBin");
+			const btnClose = document.getElementById("btnClose");
+			const sock = new WebSocket("ws://127.0.0.1:8080/");
+			sock.addEventListener("open", (e) => {
+				console.log("Connected.", e);
+			});
+			sock.addEventListener("close", (e) => {
+				console.log("Closed.", e);
+			});
+			sock.addEventListener("error", (e) => {
+				console.log("Error.", e);
+			});
+			sock.addEventListener("message", (e) => {
+				receive.innerText += e.data + "\n";
+			});
+			btnSendText.addEventListener("click", (e) => {
+				sock.send(message.value);
+				message.value = "";
+			});
+			btnSendBin.addEventListener("click", (e) => {
+				const encoder = new TextEncoder();
+				const bytes = encoder.encode(message.value);
+				sock.send(bytes);
+				message.value = "";
+			});
+			btnClose.addEventListener("click", (e) => {
+				sock.close();
+				btnSendText.disabled = true;
+				btnSendBin.disabled = true;
+				btnClose.disabled = true;
+			});
+		</script>
+	</body>
+</html>

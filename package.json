@@ -1,0 +1,28 @@
+{
+	"name": "websocket-learn1",
+	"version": "1.0.0",
+	"description": "",
+	"keywords": [],
+	"license": "ISC",
+	"author": "",
+	"type": "module",
+	"main": "src/simple_server.js",
+	"scripts": {
+		"preinstall": "pnpm audit",
+		"start_ws": "node src/simple_server.js",
+		"start_www": "serve ./public",
+		"start": "run-p start_ws start_www",
+		"format": "oxfmt",
+		"lint": "oxlint",
+		"check": "oxfmt && oxlint --fix",
+		"osv-scan": "osv-scanner ."
+	},
+	"dependencies": {
+		"ws": "^8.21.0"
+	},
+	"devDependencies": {
+		"npm-run-all2": "^9.0.1",
+		"serve": "^14.2.6"
+	},
+	"packageManager": "pnpm@10.33.4"
+}
