@@ -3,7 +3,7 @@ import { WebSocketServer } from "ws";
 const port = process.env.PORT || 8080;
 
 const wsServer = new WebSocketServer({
-	port,
+	port
 });
 
 console.log(`WebSocket server is listening on ws://localhost:${port}`);
